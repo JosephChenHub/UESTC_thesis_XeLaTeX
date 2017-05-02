@@ -1,0 +1,42 @@
+
+\documentclass[bachelor]{thesis-uestc}
+
+\title{UESTC Thesis Template}
+\author{王稳}
+
+\begin{document}
+
+%插入封面,chapters/covers.pdf
+\insertCovers
+%中文摘要
+\pdfbookmark[1]{摘要}{chineseabstract} %添加中文摘要的PDF书签
+\include{contents/Cabstract}
+%英文摘要
+\pdfbookmark[1]{Abstract}{englishabstract} 
+\include{contents/Eabstract}
+
+\thesistableofcontents  %tableofcontents
+
+%\thesischapterexordium  绪论
+
+%正文
+\include{chapters/chapter1}
+\include{chapters/chapter2}
+\include{chapters/chapter3}
+\include{chapters/chapter4} 
+\include{chapters/chapter5}
+
+%致谢
+\thesisacknowledgement
+%参考文献
+\thesisloadbibliography[nocite]{contents/reference}
+%附录
+\thesisappendix
+%
+%\thesisloadachievement{publications}
+%外文资料原文和译文
+\thesistranslationoriginal
+ 
+\thesistranslationchinese
+ 
+\end{document}
