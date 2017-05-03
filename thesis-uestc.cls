@@ -25,6 +25,7 @@
 \RequirePackage{graphicx}
 \RequirePackage[font={doublespacing, small}, labelsep=space, skip=6pt]{caption}
 
+
 \RequirePackage{array}
 \RequirePackage{setspace}
 \RequirePackage{multirow}
@@ -34,10 +35,9 @@
 \RequirePackage{lmodern}
 \RequirePackage{mathspec}
 \RequirePackage{fontspec}
-\RequirePackage{bm}
 
 \RequirePackage{xeCJK}
-
+ 
 % \setallmainfonts{Times New Roman}
 % \setCJKmainfont{SimSun}
 % \newCJKfontfamily{\heiti}{SimHei}
@@ -49,9 +49,19 @@
 	ItalicFont=timesi.ttf,
 	BoldItalicFont=timesbi.ttf,
 ]{times.ttf}
+\RequirePackage{bm} %放在数学字体后面加载   
+
+\setmathrm{timesbi.ttf} %使用粗斜体
+\let\bm\mathbf
+
 
 \DeclareMathSizes{12}{12}{7.2}{7.2}  %数学字号pt, 文本尺寸/数学基本尺寸/数学标号尺寸/数学小标号尺寸
 \RequirePackage{datetime}
+
+%EU1/times.ttf(0)/bx/n
+%\DeclareSymbolFont {<sym-font-name>} {<encoding>} {<family>} {<series>} {<shape>}
+ 
+ 
 
 
 % value > 0
@@ -95,6 +105,8 @@
 				bookmarks = true,
 				bookmarksnumbered=true,
            		bookmarksopen=true,
+            	hidelinks=true,
+            	breaklinks=true,
 				pdfdisplaydoctitle=true]{hyperref}
 \hypersetup{
  	colorlinks=true,
@@ -611,12 +623,10 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 \makeatother
 
 %----------------引用
-\newcommand{\citing}[1]{\textsuperscript{\cite{#1}}} 
-\newcommand{\citeup}[1]{\textsuperscript{\cite{#1}}} %citing --> citeup
+\newcommand{\citing}[1]{\textsuperscript{\cite{#1}}} %citing --> citeup
 \setlist{noitemsep} 
 %----------figure -------------------
-\graphicspath{{pics/}} %图片路径
-%插入单张图
+\graphicspath{{pics/}} %path:
 \newcommand{\pic}[4][htbp]{
 \begin{figure}[#1]%
 \centering%
@@ -628,12 +638,6 @@ bottom=3cm, bindingoffset=0cm]{geometry}
   \vspace{2.736mm}%
 \end{figure}%
 }
-%插入子图
-\newcommand{\addsubpic}[3]{
- \subfigure[##1]{\label{##3}\includegraphics[##2]{##3}}
-}
-%多图
- 
 %-----------table -------------
 \RequirePackage{diagbox}
 \RequirePackage{makecell}
@@ -643,6 +647,7 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 \newcommand{\insertCovers}{
 \pdfbookmark[1]{封面}{Covers}
 \includepdf[pages={1,2}]{chapters/covers}
+
 
 }
 %----------
