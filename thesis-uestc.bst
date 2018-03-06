@@ -374,16 +374,29 @@ FUNCTION {article}
     format.authors write$ add.period
     format.title "[J]" * write$ add.period
     format.journal write$ add.comma
-    format.year write$ add.comma
+    format.year write$ 
 	
-    number missing$
+	volume missing$
 	{
-    	volume ": " * write$
+        number missing$
+		{
+		} {
+		    "(" write$ 
+			number ")" * write$
+		 } if$
     } {
-    	volume "(" *
-    	number *
-    	"): " * write$
+	    number missing$
+		{
+		   add.comma 
+		 	volume  "" * write$
+		} {
+			add.comma
+			volume "(" *
+		 	number *
+			")" * write$
+		 } if$
     } if$
+	 ": "  write$
     format.pages write$
     newline$
 }
